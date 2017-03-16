@@ -7,6 +7,10 @@ subprojects {
     integTestRuntime.extendsFrom testRuntime
     // all*.exclude group: 'org.hamcrest'
     // integTestCompile.exclude module: 'hamcrest-core'
+
+    all {
+      // resolutionStrategy.force 'junit:junit:4.12-beta-3'
+    }
   }
 
   dependencies {
