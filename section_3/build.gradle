@@ -5,11 +5,15 @@ subprojects {
   configurations {
     integTestCompile.extendsFrom testCompile
     integTestRuntime.extendsFrom testRuntime
+    // all*.exclude group: 'org.hamcrest'
+    // integTestCompile.exclude module: 'hamcrest-core'
   }
 
   dependencies {
     compile 'org.slf4j:slf4j-api:1.7.24'
-    integTestCompile 'junit:junit:4.12'
+    integTestCompile ('junit:junit:4.12') {
+      // exclude module: 'hamcrest-core'
+    }
   }
 
   repositories {
