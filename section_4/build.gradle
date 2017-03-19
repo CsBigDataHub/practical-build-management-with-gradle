@@ -36,3 +36,38 @@ subprojects {
     mavenCentral()
   }
 }
+
+
+task helo {
+  println 'This is configuration'
+  doFirst {
+    println 'before'
+  }
+  doLast {
+    println 'Hello, World'
+  }
+}
+
+helo.doLast {
+  println 'One more action from task'
+}
+
+tasks.create('hello1') {
+  doLast {
+    println 'Hello, from another way of creating a task'
+  }
+}
+
+task('hello2') {
+  doLast {
+    println 'Hello from task 2'
+  }
+}
+
+
+task doRemove(type: Delete) {
+  delete 'someDirectory'
+  doFirst {
+    println 'Is about to remove someDirectory'
+  }
+}
