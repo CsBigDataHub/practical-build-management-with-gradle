@@ -1,0 +1,38 @@
+plugins {
+  id 'io.spring.dependency-management' version '1.0.0.RELEASE' apply false
+}
+
+subprojects {
+  apply plugin: 'java'
+  apply plugin: 'io.spring.dependency-management'
+
+  configurations {
+    integTestCompile.extendsFrom testCompile
+    integTestRuntime.extendsFrom testRuntime
+    // all*.exclude group: 'org.hamcrest'
+    // integTestCompile.exclude module: 'hamcrest-core'
+
+    all {
+      // resolutionStrategy.force 'junit:junit:4.12-beta-3'
+    }
+  }
+
+  dependencies {
+    compile 'org.slf4j:slf4j-api'
+    integTestCompile ('junit:junit') {
+      // exclude module: 'hamcrest-core'
+    }
+  }
+
+  dependencyManagement {
+    imports {
+        mavenBom 'io.spring.platform:platform-bom:Brussels-SR1'
+    }
+  }
+
+  repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+  }
+}
