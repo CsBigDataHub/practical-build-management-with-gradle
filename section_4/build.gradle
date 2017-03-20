@@ -57,3 +57,5 @@ secondTask.shouldRunAfter firstTask
 
 help.dependsOn firstTask
 help.dependsOn secondTask
+
+apply from: project.file("${rootProject.projectDir}/gradle/releaseNotes.gradle")
