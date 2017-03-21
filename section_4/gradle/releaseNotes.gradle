@@ -15,6 +15,8 @@ tasks.create(name: 'copyTask', type: org.gradle.api.tasks.Copy) {
     }
 
     ext.changesFile = file('changes.txt')
+    inputs.file changesFile
+    
     ext.bugs = []
     ext.features = []
     changesFile.eachLine { String line ->
@@ -28,4 +30,9 @@ tasks.create(name: 'copyTask', type: org.gradle.api.tasks.Copy) {
     }
 
     filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [bugs: bugs.join("\n"), features: features.join("\n")])
+}
+
+tasks.create('releaseNotes') {
+    inputs.file copyTask
+    outputs.dir destDir
 }
