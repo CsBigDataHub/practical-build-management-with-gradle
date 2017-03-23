@@ -5,11 +5,7 @@ plugins {
 subprojects {
   apply plugin: 'java'
   apply plugin: 'io.spring.dependency-management'
-
-  configurations {
-    integTestCompile.extendsFrom testCompile
-    integTestRuntime.extendsFrom testRuntime
-  }
+  apply from: project.file("${rootProject.projectDir}/gradle/integrationTests.gradle")
 
   dependencies {
     compile 'org.slf4j:slf4j-api'
