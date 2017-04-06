@@ -7,6 +7,7 @@ subprojects {
   apply plugin: 'io.spring.dependency-management'
   apply from: project.file("${rootProject.projectDir}/gradle/integrationTests.gradle")
   apply from: project.file("${rootProject.projectDir}/gradle/coverage.gradle")
+  apply from: project.file("${rootProject.projectDir}/gradle/code-quality.gradle")
 
   dependencies {
     compile 'org.slf4j:slf4j-api'
