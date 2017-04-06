@@ -1,14 +1,18 @@
 plugins {
   id 'io.spring.dependency-management' version '1.0.0.RELEASE' apply false
+  id 'org.sonarqube' version '2.3' apply false
 }
 
 subprojects {
   apply plugin: 'java'
+  apply plugin: 'org.sonarqube'
   apply plugin: 'io.spring.dependency-management'
   apply from: project.file("${rootProject.projectDir}/gradle/integrationTests.gradle")
   apply from: project.file("${rootProject.projectDir}/gradle/coverage.gradle")
   apply from: project.file("${rootProject.projectDir}/gradle/code-quality.gradle")
 
+  check.dependsOn 'sonarqube'
+  
   dependencies {
     compile 'org.slf4j:slf4j-api'
     testCompile 'junit:junit'
