@@ -33,3 +33,15 @@ subprojects {
 }
 
 apply from: project.file("${rootProject.projectDir}/gradle/releaseNotes.gradle")
+
+ext {
+  if (!ext.has('param')){
+    set('param',  'from closure')
+  }
+}
+
+task printParam {
+  doLast {
+    println project.ext.get('param')
+  }
+}
