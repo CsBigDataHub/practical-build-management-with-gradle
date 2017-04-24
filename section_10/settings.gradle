@@ -2,3 +2,5 @@ include ':module-api',
   'module-service',
   'module-web',
   ':module-scala'
+
+includeBuild 'standalone-module'
